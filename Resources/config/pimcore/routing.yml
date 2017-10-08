@@ -1,0 +1,5 @@
+divante_clipboard:
+    resource: "@DivanteClipboardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
