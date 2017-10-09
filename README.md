@@ -1,5 +1,7 @@
 # Pimcore 5 Clipboard
 
+[![Join the chat at https://gitter.im/pimcore5-clipboard/Lobby](https://badges.gitter.im/pimcore5-clipboard/Lobby.svg)](https://gitter.im/pimcore5-clipboard/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## :warning: Pimcore 5 Clipboard bundle is for now in a in-progress phase - it can be incompleted for now and we cannot guaranty correct work. 
 
 **TODO: Description of the plugin**
