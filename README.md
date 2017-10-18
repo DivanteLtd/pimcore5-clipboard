@@ -14,9 +14,16 @@ This plugin requires php >= 7.0.
 
 ## Installing/Getting started
 ### First step
-**TODO: Composer installation**
-
+Because bundle is for now in the alpha phase you need to be sure that your composer.json minimum stability is alpha:
+```
+"minimum-stability": "alpha"
+``` 
 ### Second step
+```
+composer require divante-ltd/pimcore5-clipboard
+```
+
+### Third step
 Open Extension tab in admin panel and install plugin. After this, installation is finished.
 
 ## Usage

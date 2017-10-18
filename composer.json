@@ -1,12 +1,13 @@
 {
   "name": "divante-ltd/pimcore5-clipboard",
-  "type": "pimcore-plugin",
-  "description": "Clipboard Bundle for Pimcore 5. Adding objects to special clipboard give you possibility to actions only on some marked by you objects from the whole tree.",
+  "type": "pimcore-bundle",
+  "description": "Clipboard Bundle for Pimcore 5. Adding objects to the special clipboard give you possibility to make actions only on some marked by you objects.",
   "keywords": [
     "pimcore",
     "clipboard",
     "bundle"
   ],
+  "license": "GPL-3.0+",
   "authors": [
     {
       "name": "DivanteLtd",
@@ -35,7 +36,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Divante\\ClipboardBundle\\": "/"
+      "Divante\\ClipboardBundle\\": "/src"
     }
   },
   "extra": {
