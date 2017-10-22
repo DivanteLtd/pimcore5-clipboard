@@ -20,7 +20,7 @@ But please compare which is in your opinion more user-friendly:
     * second step - remember their ids: `1594`, `1116`, `1133`
     * third step - filter them in their parent folder
 ![Filter your products](doc/filter_by_id.png)
-    * forth step - make some batch action
+    * fourth step - make some batch action
 ![Batch edit](doc/batch_edit.png)
     * :-1:
         * who will remember these ids ...
@@ -32,7 +32,7 @@ But please compare which is in your opinion more user-friendly:
         * exactly the same as in Pimcore Native
     * second step - add them to the Clipboard
     * third step - go to Clipboard and make some actions
-    * forth step 
+    * fourth step 
         * exactly the same as in Pimcore Native
     * :+1: 
         * no ids to remember
@@ -67,9 +67,9 @@ php bin/console pimcore:bundle:enable DivanteClipboardBundle
 ```
 
 ## Usage
-### First step - add object(s) to the Clipboard
-### Second step - navigate to the Clipboard
-### Third step - batch edit objects
+* First step - add object(s) to the Clipboard
+* Second step - navigate to the Clipboard
+* Third step - batch edit objects
 
 ## Contributing
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
