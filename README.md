@@ -1,4 +1,4 @@
-# Pimcore 5 Clipboard
+# <a name="clipboard"></a>Pimcore 5 Clipboard
 
 
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat)](LICENSE.md)
@@ -13,18 +13,18 @@ For example, you can easily add 3 of your products from different categories int
 
 **Table of Contents**
 
-- [Pimcore 5 Clipboard](#)
-    - [Description](#)
-	- [Compatibility](#)
-	- [Requirements](#)
-	- [Installing/Getting started](#)
-	- [Usage](#)
-	- [Contributing](#)
-	- [Licensing](#)
-	- [Standards & Code Quality](#)
-	- [About Authors](#)
+- [Pimcore 5 Clipboard](#clipboard)
+	- [Description](#description)
+	- [Compatibility](#compability)
+	- [Requirements](#requirements)
+	- [Installing/Getting started](#installing)
+	- [Usage](#usage)
+	- [Contributing](#contributing)
+	- [Licensing](#licensing)
+	- [Standards & Code Quality](#standards)
+	- [About Authors](#authors)
 	
-## Description	
+## <a name="description"></a>Description	
 You can say that this kind of functionality is already in the native Pimcore and you'll be right. 
 But please compare which is in your opinion more user-friendly:
 
@@ -58,13 +58,13 @@ But please compare which is in your opinion more user-friendly:
 
 A.A. Milne (or Winnie-the-Pooh :smirk:)	
 	
-## Compatibility
+## <a name="compability"></a>Compatibility
 This module is compatible with [Pimcore](https://github.com/pimcore/pimcore) ^5.0.
 
-## Requirements
+## <a name="requirements"></a>Requirements
 This plugin requires php >= 7.0.
 
-## Installing/Getting started
+## <a name="installing"></a>Installing/Getting started
 ### First step - minimum stability
 Because bundle is for now in the alpha phase you need to be sure that your composer.json minimum stability is alpha:
 ```
@@ -80,18 +80,21 @@ composer require divante-ltd/pimcore5-clipboard
 php bin/console pimcore:bundle:enable DivanteClipboardBundle
 ```
 
-## Usage
+## <a name="usage"></a>Usage
 * First step - add object(s) to the Clipboard
 * Second step - navigate to the Clipboard
 * Third step - batch edit objects
 
-## Contributing
+## <a name="contributing"></a>Contributing
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
 
-## Standards & Code Quality
+## Licensing
+The code in this project is licensed under GPLv3 license.
+
+## <a name="standards"></a>Standards & Code Quality
 This module respects our own PHPCS and PHPMD rulesets which are based on PSR-1 and PSR-2.
 
-## About Authors
+## <a name="authors"></a>About Authors
 
 
 ![Divante-logo](http://divante.co///logo_1.png "Divante")
