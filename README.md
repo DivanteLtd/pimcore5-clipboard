@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat)](LICENSE.md)
 [![Join the chat at https://gitter.im/pimcore5-clipboard/Lobby](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat)](https://gitter.im/pimcore5-clipboard/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## :warning: Pimcore 5 Clipboard bundle is for now in a in-progress phase - it can be incompleted for now and we cannot guaranty correct work. 
+## :warning: Pimcore 5 Clipboard bundle is for now in a in-progress phase - it can be incompleted for now and we cannot guarantee correct work. 
 
 Pimcore 5 Clipboard Bundle gives you the possibility to **shelve your objects into a separated area** 
 and perform chosen actions only on these separated objects - **without changing anything in your project structure!**
