@@ -6,6 +6,11 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 
 class DivanteClipboardBundle extends AbstractPimcoreBundle
 {
+    public function getInstaller()
+    {
+        return new Installer();
+    }
+
     public function getJsPaths()
     {
         return [
