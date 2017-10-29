@@ -10,4 +10,4 @@ install:
   - phpenv rehash
   
 script:
-  - phpcs --standard=PSR2 src/
+  - phpcs --standard=PSR2 $(find src/ -name '*.php')
