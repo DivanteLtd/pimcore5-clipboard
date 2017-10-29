@@ -6,3 +6,7 @@ php:
   
 install:
   - composer install
+  - pear install PHP_CodeSniffer
+  
+script:
+  - phpcs --standard=PSR2 src/
