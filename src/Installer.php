@@ -6,12 +6,12 @@
  * @copyright   Copyright (c) 2017 Divante Ltd. (https://divante.co)
  */
 
-
 namespace Divante\ClipboardBundle;
 
 use Pimcore\Db;
 use Pimcore\Extension\Bundle\Installer\AbstractInstaller;
 use Pimcore\Extension\Bundle\Installer\Exception\InstallationException;
+use Pimcore\Extension\Bundle\Installer\OutputWriterInterface;
 use Pimcore\Tool\Admin;
 
 /**
@@ -21,41 +21,64 @@ use Pimcore\Tool\Admin;
  */
 class Installer extends AbstractInstaller
 {
+
     /**
+     * @var Db\Connection
+     */
+    private $db;
+
+    /**
+     * @var string
+     */
+    private $sqlTableCreate = 'CREATE TABLE `bundle_divante_clipboard` (
+                              `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                              `userId` int(11) unsigned NOT NULL,
+                              `objectId` int(11) unsigned NOT NULL,
+                              PRIMARY KEY (`id`)
+                              ) AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;';
+    /**
+     * Installer constructor.
      *
-     * @throws InstallationException
+     * @param OutputWriterInterface|null $outputWriter
+     */
+    public function __construct(OutputWriterInterface $outputWriter = null)
+    {
+        parent::__construct($outputWriter);
+
+        $this->db = Db::get();
+    }
+
+    /**
+     * @inheritDoc
      */
     public function install()
     {
-        $sql = file_get_contents(__DIR__ . '/Resources/sql/install.sql');
         try {
-            Db::getConnection()->query($sql);
+            $this->db->query($this->sqlTableCreate);
         } catch (\Exception $ex) {
-            new InstallationException('An error occurred while installing the bundle', 0, $ex);
+            throw new InstallationException('An error occurred while installing the bundle', 0, $ex);
         }
     }
 
     /**
-     *
-     * @throws InstallationException
+     * @inheritDoc
      */
     public function uninstall()
     {
-        $sql = file_get_contents(__DIR__ . '/Resources/sql/uninstall.sql');
         try {
-            Db::getConnection()->query($sql);
+            $this->db->query('DROP TABLE IF EXISTS `bundle_divante_clipboard`');
         } catch (\Exception $ex) {
-            new InstallationException('An error occurred while uninstalling the bundle', 0, $ex);
+            throw new InstallationException('An error occurred while uninstalling the bundle', 0, $ex);
         }
     }
 
     /**
-     * @return bool
+     * @inheritDoc
      */
     public function isInstalled()
     {
         try {
-            $stmt = Db::getConnection()->query("SHOW TABLES LIKE 'bundle_divante_clipboard'");
+            $stmt = $this->db->query("SHOW TABLES LIKE 'bundle_divante_clipboard'");
             $result = strcmp((string) $stmt->fetchColumn(), 'bundle_divante_clipboard') === 0;
         } catch (\Exception $ex) {
             $result = false;
@@ -64,15 +87,15 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @return bool
+     * @inheritDoc
      */
     public function canBeInstalled()
     {
-        return Admin::isExtJS6() && !$this->isInstalled();
+        return !$this->isInstalled();
     }
 
     /**
-     * @return bool
+     * @inheritDoc
      */
     public function canBeUninstalled()
     {
@@ -80,7 +103,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @return bool
+     * @inheritDoc
      */
     public function needsReloadAfterInstall()
     {

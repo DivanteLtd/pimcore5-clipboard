@@ -16,6 +16,8 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    Divante\ClipboardBundle\Installer:
+        public: true
 # add more services, or override services that need manual wiring
 #    Divante\ClipboardBundle\ExampleClass:
 #        arguments:
