@@ -19,10 +19,6 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
 {
     protected $name = "Pimcore 5 Clipboard";
 
-    protected $description = "Shelve objects and perform actions only on these separated objects";
-
-    protected $version = "0.1.0";
-
     /**
      * @return Installer
      */
@@ -30,6 +26,7 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
     {
         return $this->container->get(Installer::class);
     }
+
 
     /**
      * @return array
@@ -42,18 +39,18 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getDescription()
     {
-        return $this->description;
+        return "Shelve objects and perform actions only on these separated objects";
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getVersion()
     {
-        return  $this->version;
+        return  "0.1.0";
     }
 }
