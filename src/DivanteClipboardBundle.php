@@ -17,25 +17,30 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
  */
 class DivanteClipboardBundle extends AbstractPimcoreBundle
 {
-    protected $name = "Pimcore 5 Clipboard";
-
     /**
-     * @return Installer
+     * {@inheritdoc}
      */
     public function getInstaller()
     {
         return $this->container->get(Installer::class);
     }
 
-
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getJsPaths()
     {
         return [
             '/bundles/divanteclipboard/js/pimcore/startup.js'
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNiceName()
+    {
+        return "Pimcore 5 Clipboard";
     }
 
     /**
