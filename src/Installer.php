@@ -49,7 +49,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function install()
     {
@@ -61,7 +61,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function uninstall()
     {
@@ -73,7 +73,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function isInstalled()
     {
@@ -87,7 +87,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function canBeInstalled()
     {
@@ -95,7 +95,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function canBeUninstalled()
     {
@@ -103,7 +103,7 @@ class Installer extends AbstractInstaller
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function needsReloadAfterInstall()
     {

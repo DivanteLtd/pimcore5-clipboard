@@ -18,7 +18,7 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 class DivanteClipboardBundle extends AbstractPimcoreBundle
 {
     /**
-     * @return Installer
+     * {@inheritdoc}
      */
     public function getInstaller()
     {
@@ -26,12 +26,36 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getJsPaths()
     {
         return [
             '/bundles/divanteclipboard/js/pimcore/startup.js'
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNiceName()
+    {
+        return "Pimcore 5 Clipboard";
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDescription()
+    {
+        return "Shelve objects and perform actions only on these separated objects";
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getVersion()
+    {
+        return  "0.1.0";
     }
 }
