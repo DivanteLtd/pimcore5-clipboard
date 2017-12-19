@@ -51,12 +51,15 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
     },
 
     prepareOnRowContextmenu: function (menu, obj, selectedRows) {
-        var openButtonIndex = menu.items.findIndex("text", t("open"));
+        var user = pimcore.globalmanager.get("user");
+        if (user.isAllowed("objects") && this.isEnabledInPerspective()) {
+            var openButtonIndex = menu.items.findIndex("text", t("open"));
 
-        menu.insert(openButtonIndex+1, new Ext.menu.Item({
-            text: t('Add to clipboard'),
-            iconCls: "pimcore_icon_open"
-        }));
+            menu.insert(openButtonIndex + 1, new Ext.menu.Item({
+                text: t('Add to clipboard'),
+                iconCls: "pimcore_icon_open"
+            }));
+        }
     },
 
     initExtrasMenu: function (toolbar) {
