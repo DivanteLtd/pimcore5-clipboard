@@ -71,9 +71,21 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
     },
 
     addObjectToClipboard: function(tree, record) {
-        console.log(tree);
-        console.log(record);
-        pimcore.helpers.showNotification("Clipboard", "Work in-progress", "error", "Quite soon you'll be able to add object to your Clipboard! :)")
+        var objectId = record.data.id;
+
+        Ext.Ajax.request({
+            'url': '/admin/clipboard/add-object',
+            'params': {
+                objectId: objectId
+            },
+            'method': 'POST',
+            'success': function (response, options) {
+                var result = Ext.decode(response.responseText);
+                if (result && result.success) {
+                    pimcore.helpers.showNotification(t('success'), t('divante_clipboard_add_success'), 'success');
+                }
+            }
+        });
     }
 });
 

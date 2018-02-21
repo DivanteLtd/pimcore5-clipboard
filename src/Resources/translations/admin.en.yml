@@ -1,2 +1,3 @@
 divante_clipboard: "Clipboard"
 divante_clipboard_add: "Add to Clipboard"
+divante_clipboard_add_success: "Object has been added to the clipboard"
