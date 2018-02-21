@@ -29,11 +29,13 @@ class ClipboardService
         $user   = $this->getCurrentUser();
         $object = $this->getObjectById($objectId);
 
-        $model = new Clipboard();
-        $model->setUserId($user->getId());
-        $model->setObjectId($object->getId());
-
-        $model->save();
+        $model = Clipboard::getByUniqueKey($user->getId(), $object->getId());
+        if (!$model instanceof Clipboard) {
+            $model = new Clipboard();
+            $model->setUserId($user->getId());
+            $model->setObjectId($object->getId());
+            $model->save();
+        }
     }
 
     /**

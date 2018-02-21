@@ -22,6 +22,24 @@ class Dao extends AbstractDao
     const TABLE_EXPRESSION = '`bundle_divante_clipboard`';
 
     /**
+     * @param int $userId
+     * @param int $objectId
+     * @throws \Exception
+     */
+    public function getByUniqueKey(int $userId, int $objectId)
+    {
+        $sql  = sprintf('SELECT * FROM %s WHERE userId = ? AND objectId = ?', static::TABLE_EXPRESSION);
+        $data = $this->db->fetchRow($sql, [$userId, $objectId]);
+
+        if ($data === false) {
+            $message = sprintf('No record found with (userId %d, objectId %d)', $userId, $objectId);
+            throw new \Exception($message);
+        }
+
+        $this->assignVariablesToModel($data);
+    }
+
+    /**
      *
      */
     public function save()

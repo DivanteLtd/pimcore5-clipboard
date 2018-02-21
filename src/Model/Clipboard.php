@@ -34,6 +34,23 @@ class Clipboard extends AbstractModel
     public $objectId;
 
     /**
+     * @param int $userId
+     * @param int $objectId
+     * @return Clipboard|null
+     */
+    public static function getByUniqueKey(int $userId, int $objectId)
+    {
+        try {
+            $model = new self();
+            $model->getDao()->getByUniqueKey($userId, $objectId);
+        } catch (\Exception $ex) {
+            $model = null;
+        }
+
+        return $model;
+    }
+
+    /**
      * @return int|null
      */
     public function getId()
@@ -79,5 +96,13 @@ class Clipboard extends AbstractModel
     public function setObjectId(int $objectId)
     {
         $this->objectId = $objectId;
+    }
+
+    /**
+     * @return Clipboard\Dao
+     */
+    public function getDao(): Clipboard\Dao
+    {
+        return parent::getDao();
     }
 }
