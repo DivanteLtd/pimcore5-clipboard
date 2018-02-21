@@ -50,6 +50,19 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
         }
     },
 
+    prepareOnRowContextmenu: function (menu, obj, selectedRows) {
+        var user = pimcore.globalmanager.get("user");
+        if (user.isAllowed("objects") && this.isEnabledInPerspective()) {
+            var openButtonIndex = menu.items.findIndex("text", t("open"));
+
+            menu.insert(openButtonIndex + 1, new Ext.menu.Item({
+                text: t('divante_clipboard_add'),
+                iconCls: "pimcore_icon_export",
+                handler: this.addObjectToClipboard.bind(this)
+            }));
+        }
+    },
+
     initExtrasMenu: function (toolbar) {
         var extrasMenu = new Ext.menu.Menu({
             items: [],
