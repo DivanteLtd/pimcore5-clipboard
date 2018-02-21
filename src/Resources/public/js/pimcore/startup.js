@@ -56,8 +56,9 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
             var openButtonIndex = menu.items.findIndex("text", t("open"));
 
             menu.insert(openButtonIndex + 1, new Ext.menu.Item({
-                text: t('Add to clipboard'),
-                iconCls: "pimcore_icon_open"
+                text: t('divante_clipboard_add'),
+                iconCls: "pimcore_icon_export",
+                handler: this.addObjectToClipboard.bind(this)
             }));
         }
     },
