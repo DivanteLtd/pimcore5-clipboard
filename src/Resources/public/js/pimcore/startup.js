@@ -39,7 +39,7 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
             var clipboardMenuItem = {
                 text: t("divante_clipboard_add"),
                 iconCls: "pimcore_icon_export",
-                handler: this.addObjectToClipboard.bind(this, tree, record)
+                handler: this.addObjectToClipboard.bind(this, record.data.id)
             };
 
             if (copyRecordIndex < 0) {
@@ -51,15 +51,18 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
     },
 
     prepareOnRowContextmenu: function (menu, obj, selectedRows) {
-        var user = pimcore.globalmanager.get("user");
-        if (user.isAllowed("objects") && this.isEnabledInPerspective()) {
-            var openButtonIndex = menu.items.findIndex("text", t("open"));
+        if (selectedRows.length == 1) {
+            var user = pimcore.globalmanager.get("user");
+            if (user.isAllowed("objects") && this.isEnabledInPerspective()) {
+                var openButtonIndex = menu.items.findIndex("text", t("open"));
+                var record = selectedRows[0];
 
-            menu.insert(openButtonIndex + 1, new Ext.menu.Item({
-                text: t('divante_clipboard_add'),
-                iconCls: "pimcore_icon_export",
-                handler: this.addObjectToClipboard.bind(this)
-            }));
+                menu.insert(openButtonIndex + 1, new Ext.menu.Item({
+                    text: t('divante_clipboard_add'),
+                    iconCls: "pimcore_icon_export",
+                    handler: this.addObjectToClipboard.bind(this, record.data.id)
+                }));
+            }
         }
     },
 
@@ -83,8 +86,20 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
         pimcore.helpers.showNotification("Clipboard", "Work in-progress", "error", "Quite soon you'll see you here your Clipboard! :)");
     },
 
-    addObjectToClipboard: function() {
-        pimcore.helpers.showNotification("Clipboard", "Work in-progress", "error", "Quite soon you'll be able to add object to your Clipboard! :)")
+    addObjectToClipboard: function(objectId) {
+        Ext.Ajax.request({
+            'url': '/admin/clipboard/add-object',
+            'params': {
+                objectId: objectId
+            },
+            'method': 'POST',
+            'success': function (response, options) {
+                var result = Ext.decode(response.responseText);
+                if (result && result.success) {
+                    pimcore.helpers.showNotification(t('success'), t('divante_clipboard_add_success'), 'success');
+                }
+            }
+        });
     }
 });
 
