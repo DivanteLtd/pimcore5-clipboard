@@ -16,6 +16,10 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    Divante\ClipboardBundle\EventListener\AdminListener:
+      tags:
+        - { name: kernel.event_subscriber }
+
     Divante\ClipboardBundle\Service\ClipboardService: ~
 
     Divante\ClipboardBundle\Installer:

@@ -83,7 +83,12 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
     },
 
     showClipboard: function() {
-        pimcore.helpers.showNotification("Clipboard", "Work in-progress", "error", "Quite soon you'll see you here your Clipboard! :)");
+        var key = 'clipboard';
+        try {
+            pimcore.globalmanager.get(key).activate();
+        } catch (e) {
+            pimcore.globalmanager.add(key, new pimcore.plugin.DivanteClipboardBundle.Clipboard());
+        }
     },
 
     addObjectToClipboard: function(objectId) {
