@@ -39,7 +39,8 @@ class DataObjectController extends AdminDataObjectController
 
             $objectData['general'] = [];
             $objectData['idPath'] = Element\Service::getIdPath($object);
-            $allowedKeys = ['o_published', 'o_key', 'o_id', 'o_type', 'o_path', 'o_modificationDate', 'o_creationDate', 'o_userOwner', 'o_userModification'];
+            $allowedKeys = ['o_published', 'o_key', 'o_id', 'o_type', 'o_path', 'o_modificationDate',
+                'o_creationDate', 'o_userOwner', 'o_userModification'];
             foreach (get_object_vars($object) as $key => $value) {
                 if (strstr($key, 'o_') && in_array($key, $allowedKeys)) {
                     $objectData['general'][$key] = $value;
@@ -54,7 +55,8 @@ class DataObjectController extends AdminDataObjectController
             $objectData['classes'] = $this->prepareChildClasses($clipboardService->getClasses());
 
             // grid-config
-            $configFile = PIMCORE_CONFIGURATION_DIRECTORY . '/object/grid/' . $object->getId() . '-user_' . $this->getAdminUser()->getId() . '.psf';
+            $configFile = PIMCORE_CONFIGURATION_DIRECTORY . '/object/grid/'
+                        . $object->getId() . '-user_' . $this->getAdminUser()->getId() . '.psf';
             if (is_file($configFile)) {
                 $gridConfig = Tool\Serialize::unserialize(file_get_contents($configFile));
                 if ($gridConfig) {
