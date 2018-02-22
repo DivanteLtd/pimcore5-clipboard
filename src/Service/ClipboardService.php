@@ -12,6 +12,7 @@ namespace Divante\ClipboardBundle\Service;
 
 use Divante\ClipboardBundle\Model\Clipboard;
 use Pimcore\Model\DataObject\AbstractObject;
+use Pimcore\Model\DataObject\ClassDefinition;
 use Pimcore\Model\User;
 use Pimcore\Tool\Admin;
 
@@ -36,6 +37,37 @@ class ClipboardService
             $model->setObjectId($object->getId());
             $model->save();
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getClasses(): array
+    {
+        $sql = 'SELECT o_classId '
+             . 'FROM bundle_divante_clipboard '
+             . 'INNER JOIN objects ON objectId = o_id '
+             . 'WHERE userId = ? '
+             . 'AND o_type = ? '
+             . 'GROUP BY o_classId';
+
+        $classIds = \Pimcore\Db::get()->fetchCol($sql, [$this->getCurrentUser()->getId(), 'object']);
+
+        $classes = [];
+        foreach ($classIds as $classId) {
+            $classes[] = ClassDefinition::getById($classId);
+        }
+
+        return $classes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getObjectIds(): array
+    {
+        $sql = 'SELECT objectId FROM bundle_divante_clipboard WHERE userId = ?';
+        return \Pimcore\Db::get()->fetchCol($sql, [$this->getCurrentUser()->getId()]);
     }
 
     /**

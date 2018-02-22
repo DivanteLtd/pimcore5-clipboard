@@ -31,7 +31,9 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
     public function getJsPaths()
     {
         return [
-            '/bundles/divanteclipboard/js/pimcore/startup.js'
+            '/bundles/divanteclipboard/js/pimcore/startup.js',
+            '/bundles/divanteclipboard/js/pimcore/clipboard.js',
+            '/bundles/divanteclipboard/js/pimcore/search.js',
         ];
     }
 

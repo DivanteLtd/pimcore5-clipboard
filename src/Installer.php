@@ -30,7 +30,7 @@ class Installer extends AbstractInstaller
     /**
      * @var string
      */
-    private $sqlTableCreate = 'CREATE TABLE `bundle_divante_clipboard` (
+    private $sqlTableCreate = 'CREATE TABLE IF NOT EXISTS `bundle_divante_clipboard` (
                               `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                               `userId` int(11) unsigned NOT NULL,
                               `objectId` int(11) unsigned NOT NULL,
