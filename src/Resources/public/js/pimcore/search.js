@@ -328,13 +328,15 @@ pimcore.plugin.DivanteClipboardBundle.Search = Class.create(pimcore.object.searc
                 text: t('delete'),
                 iconCls: "pimcore_icon_delete",
                 handler: function (data) {
-                    // var store = this.getStore();
-                    // var options = {
-                    //     "elementType": "object",
-                    //     "id": data.data.id,
-                    //     "success": store.reload.bind(this.getStore())
-                    // };
-                    // pimcore.elementservice.deleteElement(options);
+                    var store = this.getStore();
+                    Ext.Ajax.request({
+                        'url': '/admin/clipboard/delete-object',
+                        'params': {
+                            objectId: data.data.id
+                        },
+                        'method': 'POST',
+                        'success': store.reload.bind(this.getStore())
+                    });
                 }.bind(grid, data)
             }));
         } else {
@@ -348,31 +350,6 @@ pimcore.plugin.DivanteClipboardBundle.Search = Class.create(pimcore.object.searc
                     }
                 }.bind(this, data)
             }));
-
-            // menu.add(new Ext.menu.Item({
-            //     text: t('delete_selected'),
-            //     iconCls: "pimcore_icon_delete",
-            //     handler: function (data) {
-            //         var ids = [];
-            //         var selectedRows = grid.getSelectionModel().getSelection();
-            //         for (var i = 0; i < selectedRows.length; i++) {
-            //             ids.push(selectedRows[i].data.id);
-            //         }
-            //         ids = ids.join(',');
-            //
-            //         var options = {
-            //             "elementType": "object",
-            //             "id": ids,
-            //             "success": function () {
-            //                 this.getStore().reload();
-            //                 var tree = pimcore.globalmanager.get("layout_object_tree");
-            //                 var treePanel = tree.tree;
-            //                 tree.refresh(treePanel.getRootNode());
-            //             }.bind(this)
-            //         };
-            //         pimcore.elementservice.deleteElement(options);
-            //     }.bind(grid, data)
-            // }));
         }
 
         e.stopEvent();

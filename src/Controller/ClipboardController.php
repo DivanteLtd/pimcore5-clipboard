@@ -59,4 +59,25 @@ class ClipboardController extends AdminController
 
         return $this->adminJson(['success' => true]);
     }
+
+    /**
+     * @param Request $request
+     * @param ClipboardService $service
+     * @return JsonResponse
+     * @Method({"POST"})
+     * @Route("/delete-object")
+     */
+    public function deleteObjectAction(Request $request, ClipboardService $service): JsonResponse
+    {
+        $objectId = (int) $request->get('objectId');
+
+        try {
+            $service->deleteObjectFromClipboard($objectId);
+        } catch (\Exception $ex) {
+            $this->logger->error($ex->getMessage());
+            throw $ex;
+        }
+
+        return $this->adminJson(['success' => true]);
+    }
 }

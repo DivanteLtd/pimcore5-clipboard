@@ -40,6 +40,29 @@ class ClipboardService
     }
 
     /**
+     * @param int $objectId
+     */
+    public function deleteObjectFromClipboard(int $objectId)
+    {
+        $user   = $this->getCurrentUser();
+        $object = $this->getObjectById($objectId);
+
+        $model = Clipboard::getByUniqueKey($user->getId(), $object->getId());
+        if ($model instanceof Clipboard) {
+            $model->delete();
+        }
+    }
+
+    /**
+     * @param int $objectId
+     */
+    public function deleteDirtyItems(int $objectId)
+    {
+        $sql = 'DELETE FROM bundle_divante_clipboard WHERE objectId = ?';
+        \Pimcore\Db::get()->query($sql, [$objectId]);
+    }
+
+    /**
      * @return array
      */
     public function getClasses(): array
