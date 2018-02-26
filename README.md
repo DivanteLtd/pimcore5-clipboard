@@ -5,8 +5,6 @@
 [![Join the chat at https://gitter.im/pimcore5-clipboard/Lobby](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat)](https://gitter.im/pimcore5-clipboard/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/DivanteLtd/pimcore5-clipboard.svg?branch=master)](https://travis-ci.org/DivanteLtd/pimcore5-clipboard)
 
-## :warning: Pimcore 5 Clipboard bundle is for now in a in-progress phase - it can be incompleted for now and we cannot guarantee correct work. 
-
 Pimcore 5 Clipboard Bundle gives you the possibility to **shelve your objects into a separated area** 
 and perform chosen actions only on these separated objects - **without changing anything in your project structure!**
 
@@ -60,25 +58,25 @@ But please compare which is in your opinion more user-friendly:
 A.A. Milne (or Winnie-the-Pooh :smirk:)	
 	
 ## <a name="compability"></a>Compatibility
-This module is compatible with [Pimcore](https://github.com/pimcore/pimcore) ^5.0.
+This module is compatible with [Pimcore](https://github.com/pimcore/pimcore) ^5.1.0.
 
 ## <a name="requirements"></a>Requirements
 This plugin requires php >= 7.0.
 
 ## <a name="installing"></a>Installing/Getting started
-### First step - minimum stability
-Because bundle is for now in the alpha phase you need to be sure that your composer.json minimum stability is alpha:
-```
-"minimum-stability": "alpha"
-``` 
-### Second step - fetch bundle
+### First step - fetch bundle
 ```
 composer require divante-ltd/pimcore5-clipboard
 ```
 
-### Third step - enable bundle
+### Second step - enable bundle
 ```
 php bin/console pimcore:bundle:enable DivanteClipboardBundle
+```
+
+### Third step - install bundle
+```
+php bin/console pimcore:bundle:install DivanteClipboardBundle
 ```
 
 ## <a name="usage"></a>Usage
