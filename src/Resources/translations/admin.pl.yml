@@ -1,3 +1,4 @@
 divante_clipboard: "Schowek"
 divante_clipboard_add: "Dodaj do schowka"
 divante_clipboard_add_success: "Obiekt został dodany do schowka"
+divante_clipboard_error_adding_object: "Nie można dodać obiektu do schowka"

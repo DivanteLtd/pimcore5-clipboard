@@ -97,6 +97,15 @@ pimcore.plugin.DivanteClipboardBundle = Class.create(pimcore.plugin.admin, {
                 var result = Ext.decode(response.responseText);
                 if (result && result.success) {
                     pimcore.helpers.showNotification(t('success'), t('divante_clipboard_add_success'), 'success');
+                } else {
+                    pimcore.helpers.showPrettyError(
+                        result.type,
+                        t("error"),
+                        t("divante_clipboard_error_adding_object"),
+                        result.message,
+                        result.stack,
+                        result.code
+                    );
                 }
             }
         });
