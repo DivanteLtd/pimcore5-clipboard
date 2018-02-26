@@ -34,6 +34,7 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
             '/bundles/divanteclipboard/js/pimcore/startup.js',
             '/bundles/divanteclipboard/js/pimcore/clipboard.js',
             '/bundles/divanteclipboard/js/pimcore/search.js',
+            '/bundles/divanteclipboard/js/pimcore/helpers.js',
         ];
     }
 
