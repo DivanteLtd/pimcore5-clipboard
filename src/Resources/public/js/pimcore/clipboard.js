@@ -50,7 +50,10 @@ pimcore.plugin.DivanteClipboardBundle.Clipboard = Class.create(pimcore.object.ab
             title: tabTitle,
             closable: true,
             layout: "border",
-            items: [this.getTabPanel()],
+            items: [
+                this.getLayoutToolbar(),
+                this.getTabPanel()
+            ],
             iconCls: "pimcore_icon_export",
             object: this
         });
@@ -77,6 +80,40 @@ pimcore.plugin.DivanteClipboardBundle.Clipboard = Class.create(pimcore.object.ab
 
         // recalculate the layout
         pimcore.layout.refresh();
+    },
+
+    getLayoutToolbar: function () {
+
+        if (!this.toolbar) {
+
+            var buttons = [];
+
+            buttons.push({
+                tooltip: t('reload'),
+                iconCls: "pimcore_icon_reload",
+                scale: "medium",
+                handler: this.reload.bind(this)
+            });
+
+            this.toolbar = new Ext.Toolbar({
+                id: "clipboard_toolbar",
+                region: "north",
+                border: false,
+                cls: "main-toolbar",
+                items: buttons,
+                overflowHandler: 'scroller'
+            });
+        }
+
+        return this.toolbar;
+    },
+
+    reload: function () {
+        window.setTimeout(function (id) {
+            pimcore.plugin.DivanteClipboardBundle.helpers.openClipboard();
+        }.bind(window, this.id), 500);
+
+        this.closeObject();
     },
 
     getTabPanel: function () {
