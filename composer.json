@@ -27,7 +27,12 @@
     {
       "name": "Bartosz Idzikowski",
       "email": "bidzikowski@divante.pl",
-      "role": "ExtJs Developer"
+      "role": "ExtJS Developer"
+    },
+    {
+      "name": "Korneliusz Kirsz",
+      "email": "kkirsz@divante.pl",
+      "role": "PHP Developer/ExtJS Developer"
     },
     {
       "name": "Mariusz Gomse",
@@ -37,7 +42,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "pimcore/core-version": "^5.0"
+    "pimcore/core-version": "^5.1.0"
   },
   "autoload": {
     "psr-4": {
