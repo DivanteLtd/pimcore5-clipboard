@@ -13,6 +13,7 @@ namespace Divante\ClipboardBundle\Service;
 use Divante\ClipboardBundle\Model\Clipboard;
 use Pimcore\Model\DataObject\AbstractObject;
 use Pimcore\Model\DataObject\ClassDefinition;
+use Pimcore\Model\Element\ValidationException;
 use Pimcore\Model\User;
 use Pimcore\Tool\Admin;
 
@@ -24,6 +25,7 @@ class ClipboardService
 {
     /**
      * @param int $objectId
+     * @throws ValidationException
      */
     public function addObjectToClipboard(int $objectId)
     {
@@ -31,16 +33,20 @@ class ClipboardService
         $object = $this->getObjectById($objectId);
 
         $model = Clipboard::getByUniqueKey($user->getId(), $object->getId());
-        if (!$model instanceof Clipboard) {
-            $model = new Clipboard();
-            $model->setUserId($user->getId());
-            $model->setObjectId($object->getId());
-            $model->save();
+        if ($model instanceof Clipboard) {
+            $message = sprintf("Object with ID %d has already been added to the clipboard", $objectId);
+            throw new ValidationException($message);
         }
+
+        $model = new Clipboard();
+        $model->setUserId($user->getId());
+        $model->setObjectId($object->getId());
+        $model->save();
     }
 
     /**
      * @param int $objectId
+     * @throws ValidationException
      */
     public function deleteObjectFromClipboard(int $objectId)
     {
@@ -48,9 +54,12 @@ class ClipboardService
         $object = $this->getObjectById($objectId);
 
         $model = Clipboard::getByUniqueKey($user->getId(), $object->getId());
-        if ($model instanceof Clipboard) {
-            $model->delete();
+        if (!$model instanceof Clipboard) {
+            $message = sprintf('No object found with ID %d in the clipboard', $objectId);
+            throw new ValidationException($message);
         }
+
+        $model->delete();
     }
 
     /**
@@ -104,14 +113,14 @@ class ClipboardService
     /**
      * @param int $id
      * @return AbstractObject
-     * @throws \UnexpectedValueException
+     * @throws ValidationException
      */
     protected function getObjectById(int $id): AbstractObject
     {
         $object = AbstractObject::getById($id);
         if (!$object instanceof AbstractObject) {
             $message = sprintf('No object found with ID %d', $id);
-            throw new \UnexpectedValueException($message);
+            throw new ValidationException($message);
         }
 
         return $object;
