@@ -9,7 +9,7 @@
 namespace Divante\ClipboardBundle\Controller;
 
 use Divante\ClipboardBundle\Service\ClipboardService;
-use Pimcore\Bundle\AdminBundle\Controller\Admin\DataObjectController as AdminDataObjectController;
+use Pimcore\Bundle\AdminBundle\Controller\Admin\DataObject\DataObjectController as AdminDataObjectController;
 use Pimcore\Logger;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\Element;

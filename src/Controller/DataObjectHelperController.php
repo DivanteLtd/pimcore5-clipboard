@@ -9,7 +9,7 @@
 namespace Divante\ClipboardBundle\Controller;
 
 use Divante\ClipboardBundle\Service\ClipboardService;
-use Pimcore\Bundle\AdminBundle\Controller\Admin\DataObjectHelperController as AdminDataObjectHelperController;
+use Pimcore\Bundle\AdminBundle\Controller\Admin\DataObject\DataObjectHelperController as AdminDataObjectHelperController;
 use Pimcore\Model\DataObject;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
