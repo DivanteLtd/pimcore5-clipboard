@@ -1,4 +1,4 @@
-# <a name="clipboard"></a>Pimcore 5 Clipboard
+# <a name="clipboard"></a>Pimcore Clipboard
 
 
 [![Software License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg?style=flat)](LICENSE.md)
@@ -43,8 +43,8 @@ But please compare which is in your opinion more user-friendly:
 * Pimcore with Clipboard Bundle
     * first step - find your products
         * exactly the same as in Pimcore Native
-    * second step - add them to the Clipboard
-    * third step - go to Clipboard and make some actions
+    * second step - add them to the Clipboard (right click on the product on a grid or tree, then select "Add to Clipboard")
+    * third step - go to Clipboard (menu Tools/Clipboard) and make some actions
     * forth step 
         * exactly the same as in Pimcore Native
     * :+1: 
@@ -58,7 +58,7 @@ But please compare which is in your opinion more user-friendly:
 A.A. Milne (or Winnie-the-Pooh :smirk:)	
 	
 ## <a name="compability"></a>Compatibility
-This module is compatible with [Pimcore](https://github.com/pimcore/pimcore) ^5.1.0.
+This module is compatible with [Pimcore](https://github.com/pimcore/pimcore) ^5.1.0 and ^6.0.
 
 ## <a name="requirements"></a>Requirements
 This plugin requires php >= 7.0.
