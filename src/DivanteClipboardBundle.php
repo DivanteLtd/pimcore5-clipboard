@@ -9,6 +9,7 @@
 namespace Divante\ClipboardBundle;
 
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use Pimcore\Extension\Bundle\Traits\PackageVersionTrait;
 
 /**
  * Class DivanteClipboardBundle
@@ -17,6 +18,16 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
  */
 class DivanteClipboardBundle extends AbstractPimcoreBundle
 {
+    use PackageVersionTrait;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getComposerPackageName()
+    {
+        return 'divante-ltd/pimcore5-clipboard';
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -52,13 +63,5 @@ class DivanteClipboardBundle extends AbstractPimcoreBundle
     public function getDescription()
     {
         return "Shelve objects and perform actions only on these separated objects";
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getVersion()
-    {
-        return  "0.4.0";
     }
 }
